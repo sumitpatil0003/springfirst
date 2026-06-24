@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- ✅ FIXED: component scan active -->
+<!--    <context:component-scan base-package="springcollection"/>-->
+
+    <bean id="col" class="springcollection.col">
+        <constructor-arg value="Rushi"/>
+        <constructor-arg>
+            <list>
+                <value>9876543210</value>
+<!--                <value>9999999999</value>-->
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <set>
+                <value>Pune</value>
+<!--                <value>Mumbai</value>-->
+            </set>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="Java" value="Core Java"/>
+                <entry key="Spring" value="Spring Framework"/>
+                <entry key="Hibernate" value="ORM"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/spring?useSSL=false&amp;serverTimezone=UTC"/>
+        <property name="username" value="root"/>
+        <property name="password" value="shiva"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>
+
+
+
+
